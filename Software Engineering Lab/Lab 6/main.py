@@ -24,6 +24,7 @@ def get_todos():
 # Add a new todo
 @app.post("/todos", response_model=TodoItem)
 def add_todo(todo: TodoItem):
+    
     # Check if ID already exists
     for t in todos:
         if t.id == todo.id:
@@ -48,3 +49,4 @@ def delete_todo(todo_id: int):
             todos.pop(index)
             return {"detail": "Deleted"}
     raise HTTPException(status_code=404, detail="Todo not found")
+
